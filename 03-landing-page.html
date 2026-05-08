@@ -1,0 +1,2273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graceland Boutique Vacation Club — Coming Soon</title>
+<meta name="description" content="A curated Bahamian retreat. South Bahamia, Freeport, Grand Bahama. Reservations and investor inquiries opening soon.">
+<meta property="og:title" content="Graceland Boutique Vacation Club">
+<meta property="og:description" content="More than a stay — a curated Bahamian experience. Coming soon to Freeport, Grand Bahama.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #0B1B2E;
+  --navy-deep: #06111E;
+  --navy-darker: #030911;
+  --gold: #C8A24B;
+  --gold-soft: #E2C684;
+  --gold-dim: rgba(200, 162, 75, 0.4);
+  --bone: #F4EFE6;
+  --sand: #D9CFB8;
+  --stone: #8A8170;
+  --ink: #1A1A1A;
+
+  --font-display: 'Cormorant Garamond', 'Garamond', serif;
+  --font-subhead: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter Tight', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-slow: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body[data-theme="light"] {
+  --navy: #f0ebe2;
+  --navy-deep: #faf7f1;
+  --navy-darker: #ffffff;
+  --bone: #15263a;
+  --sand: #d7ccba;
+  --stone: #6b665d;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy-deep);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+/* ─── PRELOAD / FADE-IN ─── */
+.page-loader {
+  position: fixed;
+  inset: 0;
+  background: var(--navy-darker);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 1.2s var(--ease-out), visibility 1.2s var(--ease-out);
+}
+
+.page-loader.loaded {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader-mark {
+  opacity: 0.75;
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+.loader-word {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.4; transform: scale(1); }
+  50% { opacity: 0.9; transform: scale(1.04); }
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.5s var(--ease-out), backdrop-filter 0.5s var(--ease-out), padding 0.5s var(--ease-out);
+}
+
+nav.scrolled {
+  background: rgba(6, 17, 30, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 18px 48px;
+  border-bottom: 1px solid rgba(200, 162, 75, 0.1);
+}
+
+body[data-theme="light"] nav.scrolled {
+  background: rgba(255, 255, 255, 0.88);
+  border-bottom-color: rgba(21, 38, 58, 0.12);
+}
+
+.nav-mark {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--bone);
+}
+
+.nav-mark .nav-wordmark {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-cta {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  text-decoration: none;
+  padding: 10px 22px;
+  border: 1px solid var(--gold-dim);
+  transition: all 0.4s var(--ease-out);
+  cursor: pointer;
+  background: transparent;
+}
+
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+  border-color: var(--gold);
+}
+
+.theme-toggle {
+  border: 1px solid var(--gold-dim);
+  background: transparent;
+  color: var(--gold-soft);
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: all 0.3s var(--ease-out);
+}
+
+.theme-toggle:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 48px 80px;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('site-render-aerial.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transform: scale(1.08);
+  transition: opacity 2s var(--ease-out), transform 14s var(--ease-out);
+  will-change: opacity, transform;
+}
+
+.hero-bg.revealed {
+  opacity: 0.55;
+  transform: scale(1.0);
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at center, rgba(11, 27, 46, 0.4) 0%, rgba(6, 17, 30, 0.85) 100%),
+    linear-gradient(to bottom, rgba(6, 17, 30, 0.4) 0%, rgba(6, 17, 30, 0.95) 90%);
+}
+
+body[data-theme="light"] .hero-overlay {
+  background:
+    radial-gradient(ellipse at center, rgba(255, 255, 255, 0.35) 0%, rgba(244, 239, 230, 0.8) 100%),
+    linear-gradient(to bottom, rgba(250, 247, 241, 0.45) 0%, rgba(250, 247, 241, 0.92) 95%);
+}
+
+body[data-theme="light"] .alignment,
+body[data-theme="light"] .assumptions {
+  background: #f3eee6;
+  border-color: rgba(21, 38, 58, 0.16);
+}
+
+body[data-theme="light"] .alignment-list li,
+body[data-theme="light"] .assumption-item {
+  color: #15263a;
+  opacity: 0.9;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 880px;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.36em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 56px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s var(--ease-out) 0.6s, transform 1s var(--ease-out) 0.6s;
+}
+
+.hero-eyebrow.revealed { opacity: 1; transform: translateY(0); }
+
+.hero-eyebrow::before,
+.hero-eyebrow::after {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+  vertical-align: middle;
+  margin: 0 16px;
+  opacity: 0.6;
+}
+
+.hero-title {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 16px;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 1.4s var(--ease-out) 0.95s, transform 1.4s var(--ease-out) 0.95s;
+}
+
+.hero-title.revealed { opacity: 1; transform: translateY(0); }
+
+.hero-descriptor {
+  font-family: var(--font-body);
+  font-size: clamp(11px, 1.4vw, 14px);
+  font-weight: 400;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 64px;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 1.2s var(--ease-out) 1.2s, transform 1.2s var(--ease-out) 1.2s;
+}
+
+.hero-descriptor.revealed { opacity: 1; transform: translateY(0); }
+
+.hero-tagline {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.4vw, 26px);
+  font-weight: 300;
+  font-style: italic;
+  color: var(--bone);
+  opacity: 0;
+  max-width: 600px;
+  margin: 0 auto 80px;
+  line-height: 1.5;
+  transform: translateY(20px);
+  transition: opacity 1.2s var(--ease-out) 1.4s, transform 1.2s var(--ease-out) 1.4s;
+}
+
+.hero-tagline.revealed { opacity: 0.92; transform: translateY(0); }
+
+.hero-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 1s var(--ease-out) 1.65s, transform 1s var(--ease-out) 1.65s;
+}
+
+.hero-meta.revealed { opacity: 1; transform: translateY(0); }
+
+.hero-meta span { color: var(--gold); margin: 0 12px; }
+
+.hero-scroll {
+  position: absolute;
+  bottom: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  transition: opacity 1s var(--ease-out) 1.85s;
+}
+
+.hero-scroll.revealed { opacity: 0.6; }
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  animation: scroll-pulse 2.8s ease-in-out infinite;
+}
+
+@keyframes scroll-pulse {
+  0%, 100% { transform: scaleY(0.6); opacity: 0.4; transform-origin: top; }
+  50% { transform: scaleY(1); opacity: 1; }
+}
+
+/* ─── REVEAL ANIMATION (used throughout) ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 1s var(--ease-out), transform 1s var(--ease-out);
+}
+
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
+}
+
+.reveal-stagger.in-view > *:nth-child(1) { transition-delay: 0s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(2) { transition-delay: 0.15s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(4) { transition-delay: 0.45s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(5) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+.reveal-stagger.in-view > *:nth-child(6) { transition-delay: 0.75s; opacity: 1; transform: translateY(0); }
+
+.gold-rule {
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 1.6s var(--ease-slow);
+}
+
+.gold-rule.in-view { width: 64px; }
+
+/* ─── SECTIONS ─── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 48px;
+}
+
+section {
+  padding: 140px 0;
+  position: relative;
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  color: var(--bone);
+}
+
+.section-lead {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2vw, 24px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--bone);
+  opacity: 0.85;
+  max-width: 560px;
+  margin-top: 32px;
+}
+
+/* ─── INTRO / "WHAT IS IT" ─── */
+.intro {
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 96px;
+  align-items: start;
+}
+
+.intro-body p {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--bone);
+  opacity: 0.78;
+  margin-bottom: 24px;
+}
+
+.intro-body p:last-child { margin-bottom: 0; }
+
+.intro-body p strong {
+  color: var(--gold-soft);
+  font-weight: 500;
+}
+
+/* ─── STRATEGIC FRAMEWORK ─── */
+.framework {
+  background: var(--navy-deep);
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+  border-bottom: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.framework-intro {
+  max-width: 880px;
+  margin-bottom: 56px;
+}
+
+.framework-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(200, 162, 75, 0.15);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+}
+
+.framework-card {
+  background: var(--navy-darker);
+  padding: 30px 24px;
+  min-width: 0;
+}
+
+.framework-card-kicker {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.framework-card h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--bone);
+  margin-bottom: 12px;
+  overflow-wrap: anywhere;
+}
+
+.framework-card p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--bone);
+  opacity: 0.78;
+}
+
+/* ─── INTENDED OUTCOMES ─── */
+.outcomes {
+  background: var(--navy-darker);
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+  border-bottom: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.outcomes-head {
+  max-width: 860px;
+  margin-bottom: 42px;
+}
+
+.outcomes-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+  background: rgba(200, 162, 75, 0.15);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+}
+
+.outcomes-item {
+  background: var(--navy-deep);
+  padding: 22px 20px 20px;
+}
+
+.outcomes-value {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 2.8vw, 38px);
+  line-height: 1.1;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.outcomes-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0.8;
+}
+
+.outcomes-note {
+  margin-top: 16px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.assumptions {
+  margin-top: 22px;
+  border: 1px solid rgba(200, 162, 75, 0.18);
+  background: rgba(3, 9, 17, 0.72);
+  padding: 22px;
+}
+
+.assumptions-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.assumptions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 26px;
+}
+
+.assumption-item {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--bone);
+  opacity: 0.82;
+}
+
+.assumption-item strong {
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+/* ─── CREDIBILITY (plans + construction) ─── */
+.credibility {
+  background: var(--navy-darker);
+  padding: 120px 0;
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.credibility-head {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 64px;
+}
+
+.credibility-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.credibility-card {
+  background: var(--navy);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+  overflow: hidden;
+  transition: border-color 0.4s var(--ease-out);
+}
+
+.credibility-card:hover {
+  border-color: rgba(200, 162, 75, 0.3);
+}
+
+.credibility-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  vertical-align: top;
+}
+
+.credibility-caption {
+  padding: 24px 28px 28px;
+  border-top: 1px solid rgba(200, 162, 75, 0.1);
+}
+
+.credibility-caption h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--bone);
+  margin-bottom: 8px;
+  letter-spacing: -0.01em;
+}
+
+.credibility-caption p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--bone);
+  opacity: 0.72;
+}
+
+/* ─── COURTYARD EVENTS STRIP ─── */
+.courtyard-events {
+  background: var(--navy-darker);
+  padding: 100px 0;
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.courtyard-events-inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.courtyard-events-inner .section-lead {
+  margin: 24px auto 0;
+}
+
+.courtyard-events-figure {
+  margin-top: 48px;
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.courtyard-events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.courtyard-events-shot {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  display: block;
+  border: 1px solid rgba(200, 162, 75, 0.15);
+  background: var(--navy);
+}
+
+.courtyard-events-cta {
+  margin-top: 28px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.courtyard-events-cta a {
+  color: var(--gold-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+  padding-bottom: 2px;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.courtyard-events-cta a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ─── RENDER SHOWCASE ─── */
+.render-showcase {
+  background: var(--navy-darker);
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.render-frame {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1400px;
+  padding: 0 48px;
+}
+
+.render-eyebrow {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.render-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4.5vw, 52px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--bone);
+  margin-bottom: 16px;
+  letter-spacing: -0.005em;
+}
+
+.render-sub {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--bone);
+  opacity: 0.7;
+  margin-bottom: 80px;
+}
+
+.render-image-wrap {
+  position: relative;
+  border: 1px solid rgba(200, 162, 75, 0.15);
+  overflow: hidden;
+  aspect-ratio: 1024 / 723;
+  background: var(--navy);
+}
+
+.render-image {
+  position: absolute;
+  inset: 0;
+  background-image: url('site-render-aerial.png');
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.05);
+  transition: transform 1.6s var(--ease-out);
+}
+
+.render-image-wrap.in-view .render-image { transform: scale(1); }
+
+.render-corner {
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-color: var(--gold);
+  border-style: solid;
+  border-width: 0;
+  z-index: 2;
+}
+
+.render-corner.tl { top: 16px; left: 16px; border-top-width: 1px; border-left-width: 1px; }
+.render-corner.tr { top: 16px; right: 16px; border-top-width: 1px; border-right-width: 1px; }
+.render-corner.bl { bottom: 16px; left: 16px; border-bottom-width: 1px; border-left-width: 1px; }
+.render-corner.br { bottom: 16px; right: 16px; border-bottom-width: 1px; border-right-width: 1px; }
+
+.render-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  margin-top: 64px;
+  background: rgba(200, 162, 75, 0.15);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+}
+
+.stat {
+  background: var(--navy-darker);
+  padding: 40px 32px;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 400;
+  color: var(--gold);
+  line-height: 1;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.stat-label {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0.7;
+}
+
+/* ─── SUITES ─── */
+.suites {
+  background: var(--navy-deep);
+}
+
+.suites-header {
+  text-align: center;
+  margin-bottom: 96px;
+}
+
+.suites-header .eyebrow { display: inline-block; }
+
+.suites-header .gold-rule {
+  margin: 32px auto 0;
+}
+
+.suite-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.suite {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 0;
+  border-bottom: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.suite:last-child { border-bottom: none; }
+
+.suite:nth-child(even) .suite-text { order: 2; }
+.suite:nth-child(even) .suite-visual { order: 1; }
+
+.suite-num {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.suite-name {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--bone);
+  margin-bottom: 24px;
+  letter-spacing: -0.01em;
+}
+
+.suite-meta {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 32px;
+}
+
+.suite-meta span { color: var(--stone); margin: 0 8px; }
+
+.suite-desc {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--bone);
+  opacity: 0.78;
+}
+
+.suite-visual {
+  aspect-ratio: 4 / 5;
+  background: var(--navy);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+  position: relative;
+  overflow: hidden;
+  padding: 10px;
+}
+
+.suite-visual:not(.suite-visual--gallery)::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6, 17, 30, 0.88) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.suite-visual-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 28%;
+  transition: transform 1s var(--ease-out);
+  z-index: 0;
+}
+
+.suite-visual:not(.suite-visual--gallery):hover .suite-visual-img {
+  transform: scale(1.04);
+}
+
+.suite-visual--gallery {
+  aspect-ratio: auto;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.suite-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.suite-shot {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  background: var(--navy);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+}
+
+.suite-visual-label {
+  position: absolute;
+  bottom: 32px;
+  left: 24px;
+  right: 24px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  z-index: 2;
+  text-shadow: 0 1px 12px rgba(6, 17, 30, 0.8);
+}
+
+.suite-rate {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--gold-soft);
+  margin-top: 20px;
+  opacity: 0.95;
+}
+
+.suite-rate strong {
+  color: var(--bone);
+  font-weight: 500;
+}
+
+.suite-rate a {
+  color: var(--gold-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim);
+}
+
+.suite-rate a:hover {
+  color: var(--gold);
+  border-bottom-color: var(--gold);
+}
+
+/* ─── BIFURCATION ─── */
+.bifurcation {
+  background: var(--navy-darker);
+  padding: 160px 0 80px;
+  text-align: center;
+  position: relative;
+}
+
+.bifurcation::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 64px;
+  background: linear-gradient(to bottom, transparent, var(--gold));
+  transition: height 1.4s var(--ease-out) 0.4s, width 0.4s var(--ease-out);
+}
+
+.bifurcation.in-view::after { height: 64px; width: 1px; }
+
+.bifurcation .eyebrow { display: inline-block; }
+
+.bifurcation-question {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--bone);
+  margin: 32px auto 0;
+  max-width: 800px;
+  letter-spacing: -0.01em;
+}
+
+.bifurcation-question em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 300;
+}
+
+/* ─── DUAL WAITLIST ─── */
+.waitlist {
+  background: var(--navy-darker);
+  padding: 80px 0 140px;
+}
+
+.waitlist-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: rgba(200, 162, 75, 0.15);
+  border-top: 1px solid rgba(200, 162, 75, 0.15);
+  border-bottom: 1px solid rgba(200, 162, 75, 0.15);
+}
+
+.waitlist-path {
+  background: var(--navy-darker);
+  padding: 80px 64px;
+  position: relative;
+  transition: background 0.6s var(--ease-out);
+}
+
+.waitlist-path:hover {
+  background: var(--navy-deep);
+}
+
+.waitlist-path-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 24px;
+}
+
+.waitlist-path-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.6vw, 44px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--bone);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+
+.waitlist-path-sub {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-soft);
+  margin-bottom: 32px;
+}
+
+.waitlist-path-desc {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--bone);
+  opacity: 0.7;
+  margin-bottom: 40px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--gold-soft);
+  margin-bottom: 10px;
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(200, 162, 75, 0.25);
+  padding: 12px 0;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--bone);
+  transition: border-color 0.4s var(--ease-out);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--stone);
+  opacity: 0.6;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-bottom-color: var(--gold);
+}
+
+select {
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='none' stroke='%23C8A24B' stroke-width='1.5' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0 center;
+  padding-right: 24px;
+  cursor: pointer;
+}
+
+select option {
+  background: var(--navy-deep);
+  color: var(--bone);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.6;
+}
+
+.submit-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding: 18px 32px;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.4s var(--ease-out);
+  width: 100%;
+  justify-content: center;
+}
+
+.submit-btn:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+.submit-btn .arrow {
+  transition: transform 0.4s var(--ease-out);
+}
+
+.submit-btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+.form-success {
+  display: none;
+  padding: 24px;
+  border: 1px solid rgba(63, 122, 94, 0.4);
+  background: rgba(63, 122, 94, 0.08);
+  margin-top: 24px;
+}
+
+.form-success.visible { display: block; }
+
+.form-success-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--bone);
+  margin-bottom: 8px;
+}
+
+.form-success-text {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--bone);
+  opacity: 0.75;
+}
+
+/* ─── INVESTOR HIGHLIGHTS ─── */
+.investor-highlight {
+  background: var(--navy-deep);
+  padding: 140px 0;
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+  border-bottom: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+.investor-grid {
+  display: block;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.investor-panels {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  margin-top: 28px;
+}
+
+.investor-card {
+  background: var(--navy-darker);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+  padding: 28px;
+}
+
+.investor-card-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.investor-card p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--bone);
+  opacity: 0.82;
+}
+
+.alignment {
+  margin-top: 26px;
+  border: 1px solid rgba(200, 162, 75, 0.18);
+  background: rgba(3, 9, 17, 0.72);
+  padding: 22px;
+}
+
+.alignment-title {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+
+.alignment-list {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 22px;
+  padding: 0;
+}
+
+.alignment-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--bone);
+  opacity: 0.82;
+  padding-left: 16px;
+  position: relative;
+}
+
+.alignment-list li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold);
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  opacity: 0.75;
+}
+
+.investor-use-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 18px;
+  margin-top: 8px;
+}
+
+.investor-use-item {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--bone);
+  opacity: 0.82;
+}
+
+.investor-use-item strong {
+  color: var(--gold-soft);
+  font-weight: 600;
+}
+
+.investor-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(200, 162, 75, 0.15);
+  border: 1px solid rgba(200, 162, 75, 0.15);
+}
+
+.investor-stat {
+  background: var(--navy-deep);
+  padding: 32px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 24px;
+}
+
+.investor-stat-label {
+  font-family: var(--font-body);
+  font-size: 13px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--bone);
+  opacity: 0.7;
+  flex: 1;
+}
+
+.investor-stat-value {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--gold);
+  letter-spacing: -0.01em;
+}
+
+.investor-stat-value .small {
+  font-size: 18px;
+  color: var(--gold-soft);
+  margin-left: 4px;
+}
+
+.investor-stat-value--name {
+  font-size: clamp(20px, 2.2vw, 28px) !important;
+  line-height: 1.15;
+  text-align: right;
+}
+
+.investor-facts {
+  list-style: none;
+  margin: 28px 0 0;
+  padding: 0;
+}
+
+.investor-facts li {
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--bone);
+  opacity: 0.78;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(200, 162, 75, 0.08);
+  padding-left: 20px;
+  position: relative;
+}
+
+.investor-facts li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 1.15em;
+  width: 6px;
+  height: 6px;
+  background: var(--gold);
+  border-radius: 50%;
+  opacity: 0.7;
+}
+
+.investor-facts li:last-child {
+  border-bottom: none;
+}
+
+.investor-quote-inline {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-soft);
+  margin-top: 28px;
+  line-height: 1.5;
+  opacity: 0.95;
+}
+
+/* ─── FOOTER ─── */
+footer {
+  background: var(--navy-darker);
+  padding: 80px 48px 40px;
+  text-align: center;
+  border-top: 1px solid rgba(200, 162, 75, 0.1);
+}
+
+.footer-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bone);
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--bone);
+  opacity: 0.6;
+  margin-bottom: 48px;
+}
+
+.footer-meta {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+
+.footer-meta-item {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--stone);
+}
+
+.footer-meta-item a {
+  color: var(--gold-soft);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-meta-item a:hover { color: var(--gold); }
+
+.footer-fine {
+  font-family: var(--font-body);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--stone);
+  opacity: 0.6;
+  padding-top: 32px;
+  border-top: 1px solid rgba(200, 162, 75, 0.08);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  nav, nav.scrolled { padding: 20px 24px; }
+  .container { padding: 0 24px; }
+  section { padding: 80px 0; }
+  .section-title { font-size: clamp(30px, 7.4vw, 44px); line-height: 1.12; }
+  .section-lead { font-size: clamp(18px, 3.1vw, 22px); line-height: 1.52; margin-top: 22px; }
+  .eyebrow { font-size: 10px; letter-spacing: 0.26em; }
+
+  .intro-grid { grid-template-columns: 1fr; gap: 32px; }
+  .framework-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .outcomes-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .credibility-grid { grid-template-columns: 1fr; gap: 32px; }
+  .courtyard-events-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+  .render-frame { padding: 0 24px; }
+  .render-stats { grid-template-columns: repeat(2, 1fr); }
+
+  .suite { grid-template-columns: 1fr; gap: 32px; padding: 56px 0; }
+  .suite:nth-child(even) .suite-text { order: 1; }
+  .suite:nth-child(even) .suite-visual { order: 2; }
+  .suite-visual { aspect-ratio: 4 / 3; }
+
+  .waitlist-grid { grid-template-columns: 1fr; }
+  .waitlist-path { padding: 56px 32px; }
+
+  .investor-stats { grid-template-columns: repeat(2, 1fr); }
+  .investor-panels { grid-template-columns: 1fr; }
+  .investor-use-grid { grid-template-columns: 1fr; }
+  .alignment-list { grid-template-columns: 1fr; }
+  .assumptions-grid { grid-template-columns: 1fr; }
+
+  .form-row { grid-template-columns: 1fr; }
+
+  .nav-cta { display: none; }
+  .theme-toggle { padding: 9px 12px; font-size: 10px; letter-spacing: 0.14em; }
+  .nav-mark .nav-wordmark { font-size: 16px; letter-spacing: 0.1em; }
+  .hero { min-height: 88vh; padding: 108px 24px 68px; }
+  .hero-eyebrow { margin-bottom: 34px; letter-spacing: 0.24em; }
+  .hero-title { font-size: clamp(42px, 11vw, 72px); letter-spacing: 0.04em; margin-bottom: 10px; }
+  .hero-descriptor { font-size: clamp(10px, 2.2vw, 12px); letter-spacing: 0.2em; margin-bottom: 34px; }
+  .hero-tagline { font-size: clamp(18px, 3.5vw, 22px); margin-bottom: 46px; line-height: 1.48; }
+  .hero-meta { font-size: 10px; letter-spacing: 0.11em; line-height: 1.8; }
+  .hero-meta span { margin: 0 6px; }
+  .hero-scroll { bottom: 26px; font-size: 9px; letter-spacing: 0.2em; gap: 10px; }
+  .hero-scroll-line { height: 28px; }
+  .suite-name { font-size: clamp(32px, 8vw, 40px); }
+  .suite-meta { letter-spacing: 0.12em; }
+  .suite-desc { font-size: 15px; line-height: 1.62; }
+  .suite-rate { font-size: 12px; }
+  .waitlist-path-title { font-size: clamp(30px, 7vw, 40px); }
+  .waitlist-path-sub { font-size: 17px; }
+  .waitlist-path-desc { font-size: 14px; line-height: 1.62; }
+  .investor-card { padding: 22px; }
+  .investor-card h3, .framework-card h3 { font-size: 22px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { width: 16px; margin: 0 8px; }
+}
+
+@media (max-width: 520px) {
+  .framework-grid { grid-template-columns: 1fr !important; }
+  .investor-stats { grid-template-columns: 1fr; }
+  .courtyard-events-grid { grid-template-columns: 1fr; }
+  .outcomes-grid { grid-template-columns: 1fr; }
+  .container { padding: 0 18px; }
+  nav, nav.scrolled { padding: 14px 16px; }
+  .nav-actions { gap: 8px; }
+  .nav-mark .nav-wordmark { font-size: 14px; letter-spacing: 0.08em; }
+  .theme-toggle { padding: 8px 10px; font-size: 9px; letter-spacing: 0.12em; }
+  .section-title { font-size: clamp(28px, 8.2vw, 34px); line-height: 1.16; }
+  .section-lead { font-size: 17px; line-height: 1.5; margin-top: 18px; }
+  .hero { min-height: 82vh; padding: 96px 16px 56px; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 0.14em; margin-bottom: 22px; }
+  .hero-eyebrow::before, .hero-eyebrow::after { display: none; }
+  .hero-title { font-size: clamp(38px, 13vw, 52px); letter-spacing: 0.03em; }
+  .hero-descriptor { font-size: 10px; letter-spacing: 0.15em; margin-bottom: 24px; }
+  .hero-tagline { font-size: 17px; line-height: 1.45; margin-bottom: 30px; }
+  .hero-meta { font-size: 9px; letter-spacing: 0.08em; }
+  .hero-meta span { margin: 0 4px; }
+  .hero-scroll { font-size: 8px; letter-spacing: 0.16em; }
+  .suite { gap: 24px; padding: 44px 0; }
+  .suite-name { font-size: clamp(28px, 9vw, 34px); }
+  .suite-desc { font-size: 14px; line-height: 1.58; }
+  .suite-gallery { gap: 8px; }
+  .suite-shot { aspect-ratio: 5 / 4; }
+  .outcomes-item, .framework-card, .investor-card, .waitlist-path { padding: 18px 16px; }
+  .outcomes-value { font-size: 30px; }
+  .outcomes-label { letter-spacing: 0.1em; font-size: 10px; }
+  .waitlist-path-title { font-size: clamp(27px, 8.5vw, 32px); }
+  .waitlist-path-sub { font-size: 16px; margin-bottom: 20px; }
+  .waitlist-path-desc { font-size: 14px; line-height: 1.58; margin-bottom: 26px; }
+  .submit-btn { font-size: 10px; letter-spacing: 0.16em; padding: 16px 18px; }
+  .courtyard-events-cta { font-size: 11px; letter-spacing: 0.08em; }
+  .footer-tagline { margin-bottom: 28px; font-size: 15px; }
+  .footer-meta { gap: 16px; margin-bottom: 22px; }
+  .footer-meta-item { font-size: 10px; letter-spacing: 0.08em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- Page loader -->
+<div class="page-loader" id="loader">
+  <div class="loader-mark">
+    <span class="loader-word">Graceland</span>
+  </div>
+</div>
+
+<!-- Nav -->
+<nav id="nav">
+  <a href="#top" class="nav-mark">
+    <span class="nav-wordmark">Graceland</span>
+  </a>
+  <div class="nav-actions">
+    <a href="#waitlist" class="nav-cta">Join the List</a>
+    <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme">Light</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" id="heroEyebrow">Climate-smart · Digitally enabled · Women-led · Grand Bahama</div>
+    <h1 class="hero-title" id="heroTitle">Graceland</h1>
+    <div class="hero-descriptor" id="heroDesc">Resilient Tourism & Accommodation Ecosystem</div>
+    <p class="hero-tagline" id="heroTag">A women-led, climate-resilient hospitality model expanding from boutique stays into workforce accommodation and community resilience infrastructure.</p>
+    <div class="hero-meta" id="heroMeta">Sustainable tourism <span>·</span> Workforce accommodation <span>·</span> Inclusive growth</div>
+  </div>
+  <div class="hero-scroll" id="heroScroll">
+    Discover
+    <div class="hero-scroll-line"></div>
+  </div>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="container">
+    <div class="intro-grid">
+      <div class="reveal">
+        <div class="eyebrow">A New Standard</div>
+        <h2 class="section-title">From boutique hospitality to a resilience platform.</h2>
+        <p class="section-lead">Graceland has evolved into a climate-smart, digitally enabled tourism and accommodation ecosystem with measurable economic and social outcomes.</p>
+      </div>
+      <div class="intro-body reveal">
+        <p>Graceland still delivers a high-quality guest stay — but the model now targets a broader mission: <strong>tourism competitiveness, workforce lodging capacity, and climate resilience</strong> in Grand Bahama.</p>
+        <p>Phase 1 is delivered and operational. The next phase is structured to expand accommodations, strengthen event and hospitality throughput, and improve long-term asset resilience.</p>
+        <p>For guests, it remains a private South Bahamia destination. For public and private partners, it is a practical blueprint for resilient, women-led tourism development in the Caribbean.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGIC FRAMEWORK -->
+<section class="framework" id="framework">
+  <div class="container">
+    <div class="framework-intro reveal">
+      <div class="eyebrow">Grant-aligned positioning</div>
+      <h2 class="section-title">Five pillars driving the model.</h2>
+      <p class="section-lead">Graceland is positioned as a development-ready ecosystem designed to align hospitality growth with climate adaptation, inclusive leadership, and local economic resilience.</p>
+    </div>
+    <div class="framework-grid reveal-stagger">
+      <article class="framework-card">
+        <div class="framework-card-kicker">01</div>
+        <h3>Sustainable Tourism Infrastructure</h3>
+        <p>Phased expansion of guest-ready assets that support quality tourism growth while preserving manageable, boutique scale.</p>
+      </article>
+      <article class="framework-card">
+        <div class="framework-card-kicker">02</div>
+        <h3>Climate-Resilient Hospitality</h3>
+        <p>Operational planning and phased upgrades designed to strengthen adaptation, continuity, and long-term asset durability.</p>
+      </article>
+      <article class="framework-card">
+        <div class="framework-card-kicker">03</div>
+        <h3>Workforce Accommodation Ecosystem</h3>
+        <p>Flexible short and mid-term lodging capacity that supports workers, contractors, and mobile professionals in Grand Bahama.</p>
+      </article>
+      <article class="framework-card">
+        <div class="framework-card-kicker">04</div>
+        <h3>Women-Led Tourism Innovation</h3>
+        <p>Founder-led execution with a focus on local participation, inclusive opportunity pathways, and practical entrepreneurship at scale.</p>
+      </article>
+      <article class="framework-card">
+        <div class="framework-card-kicker">05</div>
+        <h3>Caribbean Development Model</h3>
+        <p>A replicable framework for island destinations seeking to combine resilient infrastructure, hospitality yield, and community impact.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- INTENDED OUTCOMES -->
+<section class="outcomes" id="outcomes">
+  <div class="container">
+    <div class="outcomes-head reveal">
+      <div class="eyebrow">Intended outcomes</div>
+      <h2 class="section-title">KPI framework for grant and partner reporting.</h2>
+      <p class="section-lead">The model is designed for measurable delivery across tourism performance, accommodation capacity, climate resilience readiness, and inclusive local economic participation.</p>
+    </div>
+    <div class="outcomes-grid reveal-stagger">
+      <div class="outcomes-item">
+        <div class="outcomes-value">3 → 6</div>
+        <div class="outcomes-label">Operational unit capacity</div>
+      </div>
+      <div class="outcomes-item">
+        <div class="outcomes-value">~$7K → $18K+</div>
+        <div class="outcomes-label">Monthly revenue trajectory</div>
+      </div>
+      <div class="outcomes-item">
+        <div class="outcomes-value">12–20%</div>
+        <div class="outcomes-label">Target investor return band</div>
+      </div>
+      <div class="outcomes-item">
+        <div class="outcomes-value">Women-led</div>
+        <div class="outcomes-label">Governance and execution model</div>
+      </div>
+      <div class="outcomes-item">
+        <div class="outcomes-value">Workforce + Tourism</div>
+        <div class="outcomes-label">Dual-demand accommodation use</div>
+      </div>
+    </div>
+    <p class="outcomes-note">KPI dashboard to be reported quarterly across occupancy, revenue, local procurement, and resilience milestones.</p>
+    <aside class="assumptions reveal">
+      <div class="assumptions-title">Assumptions & measurement method</div>
+      <div class="assumptions-grid">
+        <p class="assumption-item"><strong>Revenue figures:</strong> current run-rate and expansion targets are based on active operating performance and Phase 2 capacity assumptions provided by management.</p>
+        <p class="assumption-item"><strong>Return band:</strong> 12–20% reflects indicative private-lending targets and is subject to final underwriting, legal structuring, and investor suitability.</p>
+        <p class="assumption-item"><strong>Capacity growth:</strong> “3 → 6 units” assumes full delivery of the planned triplex expansion and operational handover within Phase 2 schedule.</p>
+        <p class="assumption-item"><strong>Reporting cadence:</strong> KPIs are intended to be tracked quarterly across occupancy, gross revenue, local procurement share, jobs supported, and resilience milestones completed.</p>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<!-- CREDIBILITY: APPROVED PLANS + PHASE 1 -->
+<section class="credibility" id="progress">
+  <div class="container">
+    <div class="credibility-head reveal">
+      <div class="eyebrow">Approvals & execution</div>
+      <h2 class="section-title">From approvals to operations.</h2>
+      <p class="section-lead" style="margin-top: 24px;">The vision is backed by signed plans and delivered construction. What is marketed is already moving on-site.</p>
+    </div>
+    <div class="credibility-grid">
+      <article class="credibility-card reveal">
+        <img src="assets/slices/credibility/plans-core.jpg" alt="Approved architectural plans and blueprint details for the Graceland property" width="775" height="756" loading="lazy" decoding="async">
+        <div class="credibility-caption">
+          <h3>All plans approved</h3>
+          <p>Site plan, elevations, pool engineering, and perimeter details are approved and on record. The development layout is not speculative.</p>
+        </div>
+      </article>
+      <article class="credibility-card reveal">
+        <img src="assets/slices/credibility/phase1-core.jpg" alt="Phase 1 construction photo timeline from site prep to completed guest units" width="775" height="756" loading="lazy" decoding="async">
+        <div class="credibility-caption">
+          <h3>Phase 1 — completed</h3>
+          <p>From footings and trenches to finished interiors and operating units, Phase 1 demonstrates execution capacity ahead of expansion.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- RENDER SHOWCASE -->
+<section class="render-showcase">
+  <div class="render-frame">
+    <div class="reveal">
+      <div class="render-eyebrow eyebrow">The Property</div>
+      <h2 class="render-title">The approved master layout, now unfolding in phases.</h2>
+      <p class="render-sub">Santa Maria Avenue · South Bahamia · Freeport</p>
+    </div>
+
+    <div class="render-image-wrap reveal" id="renderImage">
+      <div class="render-image"></div>
+      <div class="render-corner tl"></div>
+      <div class="render-corner tr"></div>
+      <div class="render-corner bl"></div>
+      <div class="render-corner br"></div>
+    </div>
+
+    <div class="render-stats reveal-stagger">
+      <div class="stat">
+        <div class="stat-number" data-count="3">0</div>
+        <div class="stat-label">Units operating today</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" data-count="3">0</div>
+        <div class="stat-label">Phase 2 units planned</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" data-count="20">0</div>
+        <div class="stat-label">Min. from GFP Airport</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number" data-count="4">0</div>
+        <div class="stat-label">Core revenue channels</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUITES -->
+<section class="suites">
+  <div class="container">
+    <div class="suites-header reveal">
+      <div class="eyebrow">Guest Inventory</div>
+      <h2 class="section-title">Three signature suites,<br>plus The Courtyard.</h2>
+      <div class="gold-rule"></div>
+    </div>
+
+    <div class="suite-list">
+
+      <article class="suite reveal">
+        <div class="suite-text">
+          <div class="suite-num">— 01</div>
+          <h3 class="suite-name">The Amelia Suite</h3>
+          <div class="suite-meta">2 Bedrooms <span>·</span> 2 Baths <span>·</span> Up to 4 Guests</div>
+          <p class="suite-desc">The largest guest offering: two bedrooms, two baths, and a full kitchen built for longer stays, family travel, and premium short-term bookings.</p>
+          <p class="suite-rate">From <strong>$160</strong> per night · cleaning fee applies · <a href="https://wa.me/12428092250">WhatsApp to book</a></p>
+        </div>
+        <div class="suite-visual suite-visual--gallery">
+          <div class="suite-gallery" aria-label="The Amelia Suite photo gallery">
+            <img class="suite-shot" src="assets/slices/amelia/01-exterior.jpg" alt="The Amelia Suite exterior" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/amelia/02-living-art.jpg" alt="The Amelia Suite living area" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/amelia/03-kitchen.jpg" alt="The Amelia Suite kitchen" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/amelia/04-bedroom.jpg" alt="The Amelia Suite bedroom" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </article>
+
+      <article class="suite reveal">
+        <div class="suite-text">
+          <div class="suite-num">— 02</div>
+          <h3 class="suite-name">The Turks Cove Suite</h3>
+          <div class="suite-meta">1 Bedroom <span>·</span> 1 Bath <span>·</span> Up to 2 Guests</div>
+          <p class="suite-desc">A one-bedroom layout with balanced comfort and value — ideal for solo travelers, couples, and efficient corporate stays.</p>
+          <p class="suite-rate">From <strong>$100</strong> per night · cleaning fee applies · <a href="https://wa.me/12428092250">WhatsApp to book</a></p>
+        </div>
+        <div class="suite-visual suite-visual--gallery">
+          <div class="suite-gallery" aria-label="The Turks Cove Suite photo gallery">
+            <img class="suite-shot" src="assets/slices/turks/01-exterior.jpg" alt="The Turks Cove Suite exterior" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/turks/02-bedroom.jpg" alt="The Turks Cove Suite bedroom" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/turks/03-bath.jpg" alt="The Turks Cove Suite bath" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/turks/04-living.jpg" alt="The Turks Cove Suite living room" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </article>
+
+      <article class="suite reveal">
+        <div class="suite-text">
+          <div class="suite-num">— 03</div>
+          <h3 class="suite-name">The Andros Breeze Suite</h3>
+          <div class="suite-meta">1 Bedroom <span>·</span> 1 Bath <span>·</span> Up to 2 Guests</div>
+          <p class="suite-desc">Bright, coastal, and guest-friendly. This one-bedroom suite is designed for travelers who want style, privacy, and practical nightly value.</p>
+          <p class="suite-rate">From <strong>$100</strong> per night · cleaning fee applies · <a href="https://wa.me/12428092250">WhatsApp to book</a></p>
+        </div>
+        <div class="suite-visual suite-visual--gallery">
+          <div class="suite-gallery" aria-label="The Andros Breeze Suite photo gallery">
+            <img class="suite-shot" src="assets/slices/andros/01-exterior.jpg" alt="The Andros Breeze Suite exterior" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/andros/02-living.jpg" alt="The Andros Breeze Suite living room" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/andros/03-bedroom.jpg" alt="The Andros Breeze Suite bedroom" loading="lazy" decoding="async">
+            <img class="suite-shot" src="assets/slices/andros/04-dining.jpg" alt="The Andros Breeze Suite dining area" loading="lazy" decoding="async">
+          </div>
+        </div>
+      </article>
+
+      <article class="suite reveal">
+        <div class="suite-text">
+          <div class="suite-num">— 04</div>
+          <h3 class="suite-name">The Courtyard @ Graceland</h3>
+          <div class="suite-meta">Pool <span>·</span> Cabanas <span>·</span> Events</div>
+          <p class="suite-desc">The property’s social and economic engine: pool, cabana, F&amp;B, and event-ready capacity for celebrations and private bookings — with built-in demand from on-site guests.</p>
+          <p class="suite-rate"><a href="#events">Private events</a> · <a href="#waitlist">Investor inquiries</a></p>
+        </div>
+        <div class="suite-visual">
+          <img class="suite-visual-img" src="assets/slices/courtyard/investment-core.jpg" alt="The Courtyard at Graceland pool, deck, and hospitality rendering" loading="lazy" decoding="async">
+          <span class="suite-visual-label">The Courtyard · Pool &amp; hospitality hub</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- COURTYARD: EVENTS -->
+<section class="courtyard-events" id="events">
+  <div class="container">
+    <div class="courtyard-events-inner reveal">
+      <div class="eyebrow">Private events</div>
+      <h2 class="section-title">Host at The Courtyard</h2>
+      <p class="section-lead">From private celebrations to corporate gatherings, The Courtyard converts hospitality traffic into event revenue — on a secure, controlled property footprint.</p>
+      <figure class="courtyard-events-figure">
+        <div class="courtyard-events-grid" aria-label="Courtyard event photo gallery">
+          <img class="courtyard-events-shot" src="assets/slices/courtyard/events-01.jpg" alt="Private event gathering at The Courtyard" loading="lazy" decoding="async">
+          <img class="courtyard-events-shot" src="assets/slices/courtyard/events-02.jpg" alt="Courtyard daytime setup with guests and tents" loading="lazy" decoding="async">
+          <img class="courtyard-events-shot" src="assets/slices/courtyard/events-03.jpg" alt="Nighttime event and catering at The Courtyard" loading="lazy" decoding="async">
+          <img class="courtyard-events-shot" src="assets/slices/courtyard/events-04.jpg" alt="Guests gathered for a celebration at The Courtyard" loading="lazy" decoding="async">
+          <img class="courtyard-events-shot" src="assets/slices/courtyard/events-05.jpg" alt="Private social event in the Graceland courtyard" loading="lazy" decoding="async">
+          <img class="courtyard-events-shot" src="assets/slices/courtyard/events-06.jpg" alt="ATV and lifestyle activity at The Courtyard" loading="lazy" decoding="async">
+        </div>
+      </figure>
+      <p class="courtyard-events-cta">Reserve via <a href="https://wa.me/12428092250">WhatsApp +1 (242) 809-2250</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- BIFURCATION -->
+<section class="bifurcation reveal" id="bifurcation">
+  <div class="container">
+    <div class="eyebrow">Two Paths</div>
+    <h2 class="bifurcation-question">Are you here <em>to stay</em>,<br>or <em>to invest</em>?</h2>
+  </div>
+</section>
+
+<!-- WAITLIST -->
+<section class="waitlist" id="waitlist">
+  <div class="container" style="padding: 0;">
+    <div class="waitlist-grid">
+
+      <!-- GUEST PATH -->
+      <div class="waitlist-path reveal">
+        <div class="waitlist-path-num">— 01 / FOR GUESTS</div>
+        <h3 class="waitlist-path-title">Book your stay.</h3>
+        <p class="waitlist-path-sub">Now hosting limited direct reservations.</p>
+        <p class="waitlist-path-desc">Submit your details to receive available date windows, suite options, and current rate guidance. Priority goes to early direct-booking requests.</p>
+
+        <form id="guestForm" onsubmit="handleSubmit(event, 'guest')">
+          <div class="form-group">
+            <label for="g-name">Full Name</label>
+            <input type="text" id="g-name" name="name" placeholder="Jane Williams" required>
+          </div>
+          <div class="form-group">
+            <label for="g-email">Email Address</label>
+            <input type="email" id="g-email" name="email" placeholder="jane@email.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="g-suite">Preferred Suite</label>
+              <select id="g-suite" name="suite">
+                <option value="">No preference</option>
+                <option value="amelia">The Amelia Suite</option>
+                <option value="turks">The Turks Cove Suite</option>
+                <option value="andros">The Andros Breeze Suite</option>
+                <option value="any">Any suite</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="g-when">When you'd visit</label>
+              <select id="g-when" name="when">
+                <option value="">Choose window</option>
+                <option value="q3-2026">Summer 2026</option>
+                <option value="q4-2026">Fall 2026</option>
+                <option value="q1-2027">Winter 2026/27</option>
+                <option value="flexible">Flexible</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="g-notes">Anything we should know? <span style="color: var(--stone); text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label>
+            <textarea id="g-notes" name="notes" placeholder="Occasion, party size, special requests..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            Join the Guest List
+            <span class="arrow">→</span>
+          </button>
+          <div class="form-success" id="g-success">
+            <div class="form-success-title">You're on the list.</div>
+            <div class="form-success-text">Thanks — we’ll reply with available windows and next-step booking details.</div>
+          </div>
+        </form>
+      </div>
+
+      <!-- INVESTOR PATH -->
+      <div class="waitlist-path reveal">
+        <div class="waitlist-path-num">— 02 / FOR INVESTORS</div>
+        <h3 class="waitlist-path-title">Inquire about Phase 2.</h3>
+        <p class="waitlist-path-sub">Private, secured hospitality lending.</p>
+        <p class="waitlist-path-desc">Phase 2 is structured for qualified investors seeking asset-backed exposure to a live hospitality operation. Submit below to request terms, packet, and call scheduling.</p>
+
+        <form id="investorForm" onsubmit="handleSubmit(event, 'investor')">
+          <div class="form-group">
+            <label for="i-name">Full Name</label>
+            <input type="text" id="i-name" name="name" placeholder="Michael Bethel" required>
+          </div>
+          <div class="form-group">
+            <label for="i-email">Email Address</label>
+            <input type="email" id="i-email" name="email" placeholder="m.bethel@email.com" required>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="i-phone">Phone</label>
+              <input type="tel" id="i-phone" name="phone" placeholder="+1 (242) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="i-interest">Interest</label>
+              <select id="i-interest" name="interest">
+                <option value="">Select</option>
+                <option value="courtyard">The Courtyard</option>
+                <option value="suite">Suite ownership</option>
+                <option value="future">Future Graceland phases</option>
+                <option value="exploring">Exploring options</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="i-context">Context <span style="color: var(--stone); text-transform: none; letter-spacing: 0; font-weight: 400;">(optional)</span></label>
+            <textarea id="i-context" name="context" placeholder="Investment range, timeline, prior hospitality interests..."></textarea>
+          </div>
+          <button type="submit" class="submit-btn">
+            Request the Investor Packet
+            <span class="arrow">→</span>
+          </button>
+          <div class="form-success" id="i-success">
+            <div class="form-success-title">Request received.</div>
+            <div class="form-success-text">Request received. We’ll send the investor packet and next-step call options shortly.</div>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- INVESTOR HIGHLIGHTS -->
+<section class="investor-highlight" id="investors">
+  <div class="container">
+    <div class="investor-grid">
+      <div class="reveal">
+        <div class="eyebrow">For Investors</div>
+        <h2 class="section-title">Private investment opportunity<br>with operating proof.</h2>
+        <p class="section-lead">This is a revenue-active hospitality asset in South Bahamia, Freeport — positioned at the intersection of resilient tourism infrastructure, workforce accommodation, and inclusive economic growth.</p>
+        <div class="alignment">
+          <div class="alignment-title">Funding alignment snapshot</div>
+          <ul class="alignment-list">
+            <li>Climate adaptation through resilient hospitality buildout</li>
+            <li>Sustainable tourism infrastructure and destination competitiveness</li>
+            <li>Workforce accommodation support for local economic continuity</li>
+            <li>Digitally enabled operations and performance tracking</li>
+            <li>Women-led entrepreneurship and inclusive value-chain participation</li>
+            <li>Replicable Caribbean development model with phased deployment</li>
+          </ul>
+        </div>
+        <div class="investor-panels">
+          <article class="investor-card">
+            <div class="investor-card-title">The Opportunity</div>
+            <p>Scalable phased model with short-term rental and corporate demand already validated. Phase 2 adds one triplex (3 units), pool + cabana (F&amp;B/events), and supporting infrastructure to materially increase monthly capacity while strengthening destination resilience.</p>
+          </article>
+          <article class="investor-card">
+            <div class="investor-card-title">Current Position</div>
+            <p>3 units completed and fully operational. Annualized revenue is tracking around <strong style="color: var(--gold-soft); font-weight: 600;">$84,000</strong>, with appraised value near <strong style="color: var(--gold-soft); font-weight: 600;">$672,000</strong> and equity position around <strong style="color: var(--gold-soft); font-weight: 600;">$320,000+</strong>.</p>
+          </article>
+          <article class="investor-card">
+            <div class="investor-card-title">Use of Funds · Phase 2 ($545K)</div>
+            <div class="investor-use-grid">
+              <div class="investor-use-item"><strong>$375,000</strong> · Triplex construction</div>
+              <div class="investor-use-item"><strong>$65,000</strong> · Cabana buildout</div>
+              <div class="investor-use-item"><strong>$50,000</strong> · Pool delivery</div>
+              <div class="investor-use-item"><strong>$30,000</strong> · Solar infrastructure</div>
+              <div class="investor-use-item"><strong>$25,000</strong> · Landscaping & site finish</div>
+            </div>
+          </article>
+          <article class="investor-card">
+            <div class="investor-card-title">Investment Structure</div>
+            <p>Private lending structure (secured, not equity), with target returns in the <strong style="color: var(--gold-soft); font-weight: 600;">12%–20%</strong> annual range, typical terms of <strong style="color: var(--gold-soft); font-weight: 600;">24–36 months</strong>, and quarterly or semi-annual distributions aligned with phased development milestones.</p>
+          </article>
+        </div>
+        <ul class="investor-facts">
+          <li>Downside protection is anchored by real-asset security, live operating revenue, and phased execution milestones.</li>
+          <li>Defined exit pathways include refinance, developer buyback, and expansion-linked value capture.</li>
+          <li>Limited investor positions; focus is disciplined capital, not broad retail fundraising.</li>
+        </ul>
+        <p class="investor-quote-inline">“This is not a concept — this is an income-producing asset ready to scale.”</p>
+      </div>
+    </div>
+
+    <div class="investor-stats reveal-stagger" style="margin-top: 72px;">
+      <div class="investor-stat">
+        <div class="investor-stat-label">Current monthly run-rate</div>
+        <div class="investor-stat-value">~$7K<span class="small">/mo</span></div>
+      </div>
+      <div class="investor-stat">
+        <div class="investor-stat-label">Post Phase 2 target</div>
+        <div class="investor-stat-value">$18K+<span class="small">/mo</span></div>
+      </div>
+      <div class="investor-stat">
+        <div class="investor-stat-label">Target annual return band</div>
+        <div class="investor-stat-value">12–20<span class="small">%</span></div>
+      </div>
+        <div class="investor-stat">
+          <div class="investor-stat-label">Phase 2 capital requirement</div>
+          <div class="investor-stat-value">$545K</div>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-title">Graceland</div>
+  <p class="footer-tagline">More than a stay — a curated Bahamian experience.</p>
+  <div class="footer-meta">
+    <div class="footer-meta-item">South Bahamia · Grand Bahama</div>
+    <div class="footer-meta-item">WhatsApp <a href="https://wa.me/12428092250">+1 (242) 809-2250</a></div>
+    <div class="footer-meta-item"><a href="#waitlist">Direct bookings & investor inquiries</a></div>
+  </div>
+  <div class="footer-fine">© 2026 Graceland Boutique Vacation Club · All rights reserved</div>
+</footer>
+
+<script>
+  // ─── PAGE LOAD ─────────────────────────────────────────
+  window.addEventListener('load', () => {
+    // Brief delay so loader actually shows
+    setTimeout(() => {
+      document.getElementById('loader').classList.add('loaded');
+
+      // Reveal hero in sequence
+      requestAnimationFrame(() => {
+        document.getElementById('heroBg').classList.add('revealed');
+        document.getElementById('heroEyebrow').classList.add('revealed');
+        document.getElementById('heroTitle').classList.add('revealed');
+        document.getElementById('heroDesc').classList.add('revealed');
+        document.getElementById('heroTag').classList.add('revealed');
+        document.getElementById('heroMeta').classList.add('revealed');
+        document.getElementById('heroScroll').classList.add('revealed');
+      });
+    }, 600);
+  });
+
+  // ─── NAV SCROLL STATE ──────────────────────────────────
+  const nav = document.getElementById('nav');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y > 80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+    lastScroll = y;
+  });
+
+  // ─── THEME TOGGLE (dark / light) ───────────────────────
+  const themeToggle = document.getElementById('themeToggle');
+  const THEME_KEY = 'graceland-theme';
+
+  function applyTheme(theme) {
+    document.body.setAttribute('data-theme', theme);
+    if (themeToggle) {
+      themeToggle.textContent = theme === 'dark' ? 'Light' : 'Dark';
+    }
+  }
+
+  const storedTheme = localStorage.getItem(THEME_KEY);
+  const defaultTheme = storedTheme || 'dark';
+  applyTheme(defaultTheme);
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const current = document.body.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem(THEME_KEY, next);
+    });
+  }
+
+  // ─── HERO PARALLAX ──────────────────────────────────────
+  const heroBg = document.getElementById('heroBg');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(() => {
+        const y = window.scrollY;
+        if (y < window.innerHeight) {
+          // Subtle parallax — bg moves slower than scroll
+          heroBg.style.transform = `scale(1.0) translateY(${y * 0.3}px)`;
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+
+  // ─── REVEAL ON SCROLL (IntersectionObserver) ───────────
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+
+        // Trigger count-up if this element has a stat-number child
+        const statNumbers = entry.target.querySelectorAll('.stat-number[data-count]');
+        statNumbers.forEach(el => {
+          if (!el.dataset.counted) {
+            countUp(el);
+            el.dataset.counted = 'true';
+          }
+        });
+      }
+    });
+  }, {
+    threshold: 0.15,
+    rootMargin: '0px 0px -80px 0px'
+  });
+
+  document.querySelectorAll('.reveal, .reveal-stagger, .gold-rule, .bifurcation').forEach(el => {
+    observer.observe(el);
+  });
+
+  // ─── COUNT-UP NUMBERS ──────────────────────────────────
+  function countUp(el) {
+    const target = parseInt(el.dataset.count, 10);
+    const duration = 1600;
+    const start = performance.now();
+    function tick(now) {
+      const elapsed = now - start;
+      const progress = Math.min(elapsed / duration, 1);
+      // ease-out
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased);
+      if (progress < 1) requestAnimationFrame(tick);
+      else el.textContent = target;
+    }
+    requestAnimationFrame(tick);
+  }
+
+  // ─── FORM HANDLING ─────────────────────────────────────
+  function handleSubmit(e, type) {
+    e.preventDefault();
+    const form = e.target;
+    const data = Object.fromEntries(new FormData(form));
+
+    // For now: log + show success state
+    // In production: POST to a form endpoint (Formspree, Resend, KemisEmail, etc.)
+    console.log(`[${type} waitlist]`, data);
+
+    // Disable submit + show success
+    const btn = form.querySelector('.submit-btn');
+    btn.style.opacity = '0.4';
+    btn.style.pointerEvents = 'none';
+    btn.innerHTML = 'Submitted ✓';
+
+    const successId = type === 'guest' ? 'g-success' : 'i-success';
+    document.getElementById(successId).classList.add('visible');
+
+    // Smooth scroll to success message
+    setTimeout(() => {
+      document.getElementById(successId).scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 200);
+  }
+</script>
+
+</body>
+</html>

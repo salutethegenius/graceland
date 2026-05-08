@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Graceland Boutique Vacation Club — Brand System v1.0</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Playfair+Display:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --graceland-navy: #0B1B2E;
+    --graceland-navy-deep: #06111E;
+    --graceland-gold: #C8A24B;
+    --graceland-gold-soft: #E2C684;
+    --graceland-bone: #F4EFE6;
+    --graceland-sand: #D9CFB8;
+    --graceland-stone: #8A8170;
+    --graceland-ink: #1A1A1A;
+    --graceland-success: #3F7A5E;
+    --graceland-warning: #B88A2E;
+    --graceland-error: #A94B3B;
+
+    --font-display: 'Cormorant Garamond', 'Garamond', serif;
+    --font-subhead: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter Tight', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Menlo', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    background: var(--graceland-navy);
+    color: var(--graceland-bone);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 48px;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 48px;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.18);
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 64px;
+    background: var(--graceland-gold);
+    opacity: 0.6;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--graceland-gold);
+    margin-bottom: 56px;
+  }
+
+  .hero-wordmark {
+    font-family: var(--font-display);
+    font-size: 56px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    line-height: 1.1;
+    color: var(--graceland-bone);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+  }
+
+  .hero-descriptor {
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--graceland-gold-soft);
+    margin-bottom: 80px;
+  }
+
+  .hero-tagline {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--graceland-bone);
+    opacity: 0.85;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.5;
+  }
+
+  .hero-meta {
+    margin-top: 80px;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--graceland-stone);
+  }
+
+  /* ─── SECTION ─── */
+  section {
+    padding: 120px 0;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.12);
+  }
+
+  .section-header {
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    align-items: end;
+  }
+
+  .section-number {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--graceland-gold);
+    letter-spacing: 0.1em;
+    margin-bottom: 16px;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 1.1;
+    color: var(--graceland-bone);
+    letter-spacing: -0.01em;
+  }
+
+  .section-intro {
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--graceland-bone);
+    opacity: 0.7;
+    max-width: 480px;
+  }
+
+  /* ─── PALETTE ─── */
+  .palette-group {
+    margin-bottom: 64px;
+  }
+
+  .palette-group-title {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--graceland-gold);
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.2);
+  }
+
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .palette-grid.three { grid-template-columns: repeat(3, 1fr); }
+
+  .swatch {
+    display: flex;
+    flex-direction: column;
+    cursor: default;
+  }
+
+  .swatch-color {
+    aspect-ratio: 4 / 5;
+    border: 1px solid rgba(200, 162, 75, 0.15);
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .swatch-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--graceland-bone);
+    margin-bottom: 4px;
+    letter-spacing: -0.005em;
+  }
+
+  .swatch-hex {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--graceland-gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 8px;
+  }
+
+  .swatch-token {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--graceland-stone);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .type-specimen {
+    padding: 48px 0;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.1);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 48px;
+    align-items: baseline;
+  }
+
+  .type-specimen:last-child { border-bottom: none; }
+
+  .type-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--graceland-stone);
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+  }
+
+  .type-meta-label {
+    color: var(--graceland-gold);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+  }
+
+  .type-display-xl {
+    font-family: var(--font-display);
+    font-size: 72px;
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--graceland-bone);
+  }
+
+  .type-display {
+    font-family: var(--font-display);
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--graceland-bone);
+  }
+
+  .type-h1 {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 1.15;
+    color: var(--graceland-bone);
+  }
+
+  .type-h2 {
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--graceland-bone);
+  }
+
+  .type-h3 {
+    font-family: var(--font-subhead);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--graceland-bone);
+  }
+
+  .type-eyebrow {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--graceland-gold);
+  }
+
+  .type-body-l {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--graceland-bone);
+    opacity: 0.9;
+  }
+
+  .type-body {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--graceland-bone);
+    opacity: 0.85;
+  }
+
+  .type-mono {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--graceland-gold-soft);
+    letter-spacing: 0.02em;
+  }
+
+  /* ─── LOGO LOCKUPS ─── */
+  .lockup-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .lockup-card {
+    background: var(--graceland-navy-deep);
+    border: 1px solid rgba(200, 162, 75, 0.18);
+    padding: 64px 48px;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .lockup-card.light {
+    background: var(--graceland-bone);
+    border-color: rgba(11, 27, 46, 0.12);
+  }
+
+  .lockup-card.light .lockup-wordmark {
+    color: var(--graceland-navy);
+  }
+
+  .lockup-card.light .lockup-descriptor {
+    color: var(--graceland-stone);
+  }
+
+  .lockup-card.light .lockup-label {
+    color: var(--graceland-stone);
+  }
+
+  .lockup-label {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--graceland-gold);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  /* Stacked lockup */
+  .lockup-stacked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .lockup-stacked .lockup-wordmark {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--graceland-bone);
+    text-align: center;
+  }
+
+  .lockup-stacked .lockup-descriptor {
+    font-family: var(--font-body);
+    font-size: 9px;
+    font-weight: 400;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--graceland-gold-soft);
+    margin-top: -8px;
+  }
+
+  /* Horizontal lockup */
+  .lockup-horizontal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .lockup-horizontal .lockup-text {
+    display: flex;
+    flex-direction: column;
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .lockup-horizontal .lockup-wordmark {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--graceland-bone);
+  }
+
+  .lockup-horizontal .lockup-descriptor {
+    font-family: var(--font-body);
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--graceland-gold-soft);
+    margin-top: 4px;
+  }
+
+  /* Compact lockup */
+  .lockup-compact {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .lockup-compact .lockup-wordmark {
+    font-family: var(--font-display);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--graceland-bone);
+  }
+
+  /* Type-only placeholder (final mark TBD) */
+  .lockup-type-only {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .lockup-type-only .lockup-wordmark {
+    font-size: 28px;
+  }
+
+  /* ─── VOICE ─── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .voice-card {
+    padding: 40px;
+    border: 1px solid rgba(200, 162, 75, 0.15);
+    background: var(--graceland-navy-deep);
+  }
+
+  .voice-card.dont {
+    border-color: rgba(169, 75, 59, 0.3);
+  }
+
+  .voice-card.do {
+    border-color: rgba(200, 162, 75, 0.4);
+  }
+
+  .voice-label {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+  }
+
+  .voice-card.dont .voice-label { color: var(--graceland-error); }
+  .voice-card.do .voice-label { color: var(--graceland-gold); }
+
+  .voice-text {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 1.45;
+    color: var(--graceland-bone);
+    font-style: italic;
+  }
+
+  .voice-card.dont .voice-text {
+    opacity: 0.55;
+  }
+
+  /* ─── SUITE NAMING ─── */
+  .naming-table {
+    width: 100%;
+    border-top: 1px solid rgba(200, 162, 75, 0.2);
+  }
+
+  .naming-row {
+    display: grid;
+    grid-template-columns: 280px 1fr 200px;
+    padding: 32px 0;
+    border-bottom: 1px solid rgba(200, 162, 75, 0.1);
+    align-items: baseline;
+    gap: 32px;
+  }
+
+  .naming-name {
+    font-family: var(--font-display);
+    font-size: 32px;
+    font-weight: 400;
+    color: var(--graceland-bone);
+    letter-spacing: -0.005em;
+  }
+
+  .naming-desc {
+    font-family: var(--font-body);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--graceland-bone);
+    opacity: 0.7;
+  }
+
+  .naming-meta {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--graceland-gold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-align: right;
+  }
+
+  /* ─── FOOTER ─── */
+  footer {
+    padding: 80px 48px;
+    text-align: center;
+    border-top: 1px solid rgba(200, 162, 75, 0.18);
+  }
+
+  footer .footer-text {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-style: italic;
+    color: var(--graceland-bone);
+    opacity: 0.6;
+    margin-bottom: 8px;
+  }
+
+  footer .footer-meta {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--graceland-stone);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+
+  /* ─── RESPONSIVE ─── */
+  @media (max-width: 768px) {
+    .container { padding: 0 24px; }
+    .section-header { grid-template-columns: 1fr; gap: 24px; }
+    .section-title { font-size: 32px; }
+    .palette-grid, .palette-grid.three { grid-template-columns: repeat(2, 1fr); }
+    .lockup-grid { grid-template-columns: 1fr; }
+    .voice-grid { grid-template-columns: 1fr; }
+    .type-specimen { grid-template-columns: 1fr; gap: 16px; }
+    .naming-row { grid-template-columns: 1fr; }
+    .hero-wordmark { font-size: 32px; }
+    .type-display-xl { font-size: 44px; }
+    .type-display { font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<header class="hero">
+  <div>
+    <div class="hero-eyebrow">Brand Identity System · v1.0</div>
+    <h1 class="hero-wordmark">Graceland</h1>
+    <div class="hero-descriptor">Boutique Vacation Club</div>
+    <p class="hero-tagline">More than a stay — a curated Bahamian experience.</p>
+    <div class="hero-meta">South Bahamia · Freeport · Grand Bahama</div>
+  </div>
+</header>
+
+<!-- ═══════════════════ FOUNDATION ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-number">01 / FOUNDATION</div>
+        <h2 class="section-title">Quiet luxury,<br>rooted in place.</h2>
+      </div>
+      <p class="section-intro">
+        Graceland is not a hotel and not an Airbnb. It sits in the deliberate category of boutique vacation clubs — properties that combine the comfort of a private home with the service of hospitality. The brand carries two audiences without leaning toward either: the curated traveler and the hospitality investor.
+      </p>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; padding-top: 32px; border-top: 1px solid rgba(200, 162, 75, 0.15);">
+      <div>
+        <div class="type-eyebrow" style="margin-bottom: 16px;">Pillar 01</div>
+        <div class="type-h2" style="margin-bottom: 12px;">Curated</div>
+        <p class="type-body" style="font-size: 14px;">Nothing is generic. Every suite is named, every experience is selected.</p>
+      </div>
+      <div>
+        <div class="type-eyebrow" style="margin-bottom: 16px;">Pillar 02</div>
+        <div class="type-h2" style="margin-bottom: 12px;">Bahamian</div>
+        <p class="type-body" style="font-size: 14px;">Rooted in Grand Bahama and the wider archipelago. The names anchor the place.</p>
+      </div>
+      <div>
+        <div class="type-eyebrow" style="margin-bottom: 16px;">Pillar 03</div>
+        <div class="type-h2" style="margin-bottom: 12px;">Boutique</div>
+        <p class="type-body" style="font-size: 14px;">Small by design. Personal by default. The opposite of resort-scale.</p>
+      </div>
+      <div>
+        <div class="type-eyebrow" style="margin-bottom: 16px;">Pillar 04</div>
+        <div class="type-h2" style="margin-bottom: 12px;">Earned</div>
+        <p class="type-body" style="font-size: 14px;">Investor-credible. Substance over claims. Quiet competence.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PALETTE ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-number">02 / PALETTE</div>
+        <h2 class="section-title">Navy dominates.<br>Gold is rare.</h2>
+      </div>
+      <p class="section-intro">
+        Deep navy is the brand's primary surface. Gold is reserved for the monogram, primary calls-to-action, and key wordmark moments. Bone takes over when the brand needs to feel open or hospitable — booking flows, investor packets, in-suite collateral.
+      </p>
+    </div>
+
+    <!-- PRIMARY -->
+    <div class="palette-group">
+      <div class="palette-group-title">Primary</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #0B1B2E;"></div>
+          <div class="swatch-name">Graceland Navy</div>
+          <div class="swatch-hex">#0B1B2E</div>
+          <div class="swatch-token">--graceland-navy</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #06111E;"></div>
+          <div class="swatch-name">Deep Navy</div>
+          <div class="swatch-hex">#06111E</div>
+          <div class="swatch-token">--graceland-navy-deep</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #C8A24B;"></div>
+          <div class="swatch-name">Graceland Gold</div>
+          <div class="swatch-hex">#C8A24B</div>
+          <div class="swatch-token">--graceland-gold</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #E2C684;"></div>
+          <div class="swatch-name">Soft Gold</div>
+          <div class="swatch-hex">#E2C684</div>
+          <div class="swatch-token">--graceland-gold-soft</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NEUTRALS -->
+    <div class="palette-group">
+      <div class="palette-group-title">Neutrals</div>
+      <div class="palette-grid">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #F4EFE6;"></div>
+          <div class="swatch-name">Bone</div>
+          <div class="swatch-hex">#F4EFE6</div>
+          <div class="swatch-token">--graceland-bone</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #D9CFB8;"></div>
+          <div class="swatch-name">Sand</div>
+          <div class="swatch-hex">#D9CFB8</div>
+          <div class="swatch-token">--graceland-sand</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #8A8170;"></div>
+          <div class="swatch-name">Stone</div>
+          <div class="swatch-hex">#8A8170</div>
+          <div class="swatch-token">--graceland-stone</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #1A1A1A;"></div>
+          <div class="swatch-name">Ink</div>
+          <div class="swatch-hex">#1A1A1A</div>
+          <div class="swatch-token">--graceland-ink</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FUNCTIONAL -->
+    <div class="palette-group">
+      <div class="palette-group-title">Functional</div>
+      <div class="palette-grid three">
+        <div class="swatch">
+          <div class="swatch-color" style="background: #3F7A5E;"></div>
+          <div class="swatch-name">Reef Green</div>
+          <div class="swatch-hex">#3F7A5E</div>
+          <div class="swatch-token">--graceland-success</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #B88A2E;"></div>
+          <div class="swatch-name">Amber</div>
+          <div class="swatch-hex">#B88A2E</div>
+          <div class="swatch-token">--graceland-warning</div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background: #A94B3B;"></div>
+          <div class="swatch-name">Coral</div>
+          <div class="swatch-hex">#A94B3B</div>
+          <div class="swatch-token">--graceland-error</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ TYPOGRAPHY ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-number">03 / TYPOGRAPHY</div>
+        <h2 class="section-title">Serif for what matters.<br>Sans for what works.</h2>
+      </div>
+      <p class="section-intro">
+        Cormorant Garamond is the brand voice in print form — refined, classical, unhurried. Inter Tight handles everything functional: forms, body copy, navigation. Suite names and proper nouns always set in serif. Everything else, in sans.
+      </p>
+    </div>
+
+    <div style="border-top: 1px solid rgba(200, 162, 75, 0.15);">
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Display XL</div>
+          Cormorant Garamond<br>400 / 72px / 1.05<br>tracking -0.02em
+        </div>
+        <div class="type-display-xl">The Amelia Suite</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Display</div>
+          Cormorant Garamond<br>400 / 48px / 1.1
+        </div>
+        <div class="type-display">More than a stay.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Heading 1</div>
+          Cormorant Garamond<br>500 / 36px / 1.15
+        </div>
+        <div class="type-h1">A curated Bahamian retreat</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Heading 2</div>
+          Cormorant Garamond<br>500 / 28px / 1.2
+        </div>
+        <div class="type-h2">South Bahamia, Grand Bahama</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Heading 3</div>
+          Playfair Display<br>600 / 20px / 1.3
+        </div>
+        <div class="type-h3">Two bedrooms, two baths</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Eyebrow</div>
+          Inter Tight<br>500 / 12px<br>tracking 0.18em
+        </div>
+        <div class="type-eyebrow">Coming Soon · Spring 2026</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Body Large</div>
+          Inter Tight<br>400 / 18px / 1.6
+        </div>
+        <div class="type-body-l">The Amelia Suite. Two bedrooms, two baths, and a kitchen built for slow mornings. Twenty minutes from the airport, a quiet street in South Bahamia.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Body</div>
+          Inter Tight<br>400 / 16px / 1.6
+        </div>
+        <div class="type-body">Four named suites. A central courtyard. A small property, deliberately so. Booking opens for select members in the coming weeks. Investor inquiries handled separately.</div>
+      </div>
+
+      <div class="type-specimen">
+        <div class="type-meta">
+          <div class="type-meta-label">Mono</div>
+          JetBrains Mono<br>400 / 14px
+        </div>
+        <div class="type-mono">RES-2026-0421-AME · 4 nights · check-in 14:00</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ LOGO LOCKUPS ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-number">04 / LOGO SYSTEM</div>
+        <h2 class="section-title">Four lockups,<br>wordmark-first.</h2>
+      </div>
+      <p class="section-intro">
+        Final monogram and master brand mark are in progress. Until then, the system is expressed through wordmark lockups — stacked, horizontal, compact, and type-only — covering hero placement through digital chrome.
+      </p>
+    </div>
+
+    <div class="lockup-grid">
+
+      <!-- Stacked -->
+      <div class="lockup-card">
+        <div class="lockup-label">01 — Primary / Stacked</div>
+        <div class="lockup-stacked">
+          <div>
+            <div class="lockup-wordmark">Graceland</div>
+            <div class="lockup-descriptor">Boutique Vacation Club</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Horizontal -->
+      <div class="lockup-card">
+        <div class="lockup-label">02 — Horizontal</div>
+        <div class="lockup-horizontal">
+          <div class="lockup-text">
+            <div class="lockup-wordmark">Graceland</div>
+            <div class="lockup-descriptor">Boutique Vacation Club</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Compact -->
+      <div class="lockup-card">
+        <div class="lockup-label">03 — Compact</div>
+        <div class="lockup-compact">
+          <div class="lockup-wordmark">Graceland</div>
+        </div>
+      </div>
+
+      <!-- Mark Only -->
+      <div class="lockup-card lockup-mark-only">
+        <div class="lockup-label">04 — Type-only (mark TBD)</div>
+        <div class="lockup-type-only">
+          <div class="lockup-wordmark">Graceland</div>
+          <div class="lockup-descriptor">Boutique Vacation Club</div>
+        </div>
+      </div>
+
+      <!-- Light variant -->
+      <div class="lockup-card light">
+        <div class="lockup-label">05 — Stacked / Light</div>
+        <div class="lockup-stacked">
+          <div>
+            <div class="lockup-wordmark">Graceland</div>
+            <div class="lockup-descriptor">Boutique Vacation Club</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Light horizontal -->
+      <div class="lockup-card light">
+        <div class="lockup-label">06 — Horizontal / Light</div>
+        <div class="lockup-horizontal">
+          <div class="lockup-text">
+            <div class="lockup-wordmark">Graceland</div>
+            <div class="lockup-descriptor">Boutique Vacation Club</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ VOICE ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-number">05 / VOICE</div>
+        <h2 class="section-title">Composed.<br>Specific. Hospitable.</h2>
+      </div>
+      <p class="section-intro">
+        The voice never breathless, never hard-selling. It names places, names suites, names experiences. It avoids "amazing," "stunning," "unforgettable." It is the voice of a good host, not a brochure.
+      </p>
+    </div>
+
+    <div class="voice-grid">
+      <div class="voice-card dont">
+        <div class="voice-label">— Don't write</div>
+        <p class="voice-text">"Welcome to The Amelia Suite, an absolutely stunning 2-bedroom oasis where luxury meets paradise! Book now for an unforgettable experience!"</p>
+      </div>
+      <div class="voice-card do">
+        <div class="voice-label">— Do write</div>
+        <p class="voice-text">"The Amelia Suite. Two bedrooms, two baths, and a kitchen built for slow mornings. Twenty minutes from the airport."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ NAMING ═══════════════════ -->
+<section>
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-number">06 / NAMING</div>
+        <h2 class="section-title">A system that scales.</h2>
+      </div>
+      <p class="section-intro">
+        Graceland is the parent. Suites take place names. Amenities take function names. Service tiers take the Graceland prefix. The architecture lets the brand grow without fragmenting.
+      </p>
+    </div>
+
+    <div class="naming-table">
+      <div class="naming-row">
+        <div class="naming-name">The Amelia Suite</div>
+        <div class="naming-desc">Two bedrooms, two baths. The largest of the named suites.</div>
+        <div class="naming-meta">Suite · 2BR / 2BA</div>
+      </div>
+      <div class="naming-row">
+        <div class="naming-name">The Turks Cove Suite</div>
+        <div class="naming-desc">One bedroom, one bath. A quieter footprint.</div>
+        <div class="naming-meta">Suite · 1BR / 1BA</div>
+      </div>
+      <div class="naming-row">
+        <div class="naming-name">The Andros Breeze Suite</div>
+        <div class="naming-desc">One bedroom, one bath. Light-filled, breeze-forward.</div>
+        <div class="naming-meta">Suite · 1BR / 1BA</div>
+      </div>
+      <div class="naming-row">
+        <div class="naming-name">The Courtyard @ Graceland</div>
+        <div class="naming-desc">The social hub. Events, dining, and the daily-income asset within the property.</div>
+        <div class="naming-meta">Amenity · Investor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer>
+  <p class="footer-text">More than a stay — a curated Bahamian experience.</p>
+  <div class="footer-meta">Brand identity v1.0 · Prepared by KGC for Jecoliah · DFBA</div>
+</footer>
+
+</body>
+</html>
