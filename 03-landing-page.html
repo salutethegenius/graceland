@@ -150,6 +150,35 @@ body[data-theme="light"] nav.scrolled {
   gap: 12px;
 }
 
+.variant-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 1px solid rgba(200, 162, 75, 0.22);
+  padding: 4px;
+}
+
+.variant-link {
+  font-family: var(--font-body);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--stone);
+  border: 1px solid transparent;
+  padding: 6px 8px;
+  transition: all 0.2s var(--ease-out);
+}
+
+.variant-link:hover {
+  color: var(--gold-soft);
+}
+
+.variant-link.active {
+  color: var(--gold);
+  border-color: rgba(200, 162, 75, 0.35);
+}
+
 .nav-cta {
   font-family: var(--font-body);
   font-size: 11px;
@@ -245,10 +274,141 @@ body[data-theme="light"] .assumption-item {
   opacity: 0.9;
 }
 
+body[data-theme="light"] .variant-switch {
+  border-color: rgba(21, 38, 58, 0.2);
+}
+
+body[data-theme="light"] .variant-link {
+  color: #5e6670;
+}
+
+body[data-theme="light"] .variant-link.active {
+  color: #15263a;
+  border-color: rgba(21, 38, 58, 0.3);
+}
+
+body[data-theme="light"] .hero-media {
+  border-color: rgba(21, 38, 58, 0.24);
+  background: rgba(255, 255, 255, 0.56);
+}
+
+body[data-theme="light"] .hero-primary-cta {
+  color: #15263a;
+  border-color: rgba(21, 38, 58, 0.42);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+body[data-theme="light"] .hero-primary-cta:hover {
+  border-color: #15263a;
+  background: #15263a;
+  color: #f4efe6;
+}
+
+body[data-variant] .hero {
+  min-height: auto;
+  padding: 128px 0 78px;
+  display: block;
+  text-align: left;
+  background: var(--navy-deep);
+}
+
+body[data-variant] .hero-bg,
+body[data-variant] .hero-overlay,
+body[data-variant] .hero-scroll {
+  display: none;
+}
+
+body[data-variant] .hero-content {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+body[data-variant] .hero-title {
+  order: 1;
+  margin-bottom: 18px;
+}
+
+body[data-variant] .hero-media {
+  order: 2;
+  display: block;
+}
+
+body[data-variant] .hero-eyebrow {
+  order: 3;
+  margin-bottom: 14px;
+}
+
+body[data-variant] .hero-eyebrow::before,
+body[data-variant] .hero-eyebrow::after {
+  display: none;
+}
+
+body[data-variant] .hero-descriptor {
+  order: 4;
+  margin-bottom: 24px;
+}
+
+body[data-variant] .hero-tagline {
+  order: 5;
+  max-width: 780px;
+  margin: 0 0 26px;
+}
+
+body[data-variant] .hero-meta {
+  order: 6;
+}
+
+body[data-variant] .hero-actions {
+  order: 7;
+  display: flex;
+}
+
+body[data-variant="a"] #framework,
+body[data-variant="a"] #outcomes,
+body[data-variant="a"] #investors,
+body[data-variant="a"] #investorWaitlistPath,
+body[data-variant="a"] #progress,
+body[data-variant="a"] .render-showcase,
+body[data-variant="a"] #bifurcation {
+  display: none;
+}
+
+body[data-variant="a"] .waitlist-grid,
+body[data-variant="b"] .waitlist-grid {
+  grid-template-columns: 1fr;
+}
+
+body[data-variant="b"] #guestWaitlistPath,
+body[data-variant="b"] #bifurcation,
+body[data-variant="b"] .suites,
+body[data-variant="b"] #events {
+  display: none;
+}
+
 .hero-content {
   position: relative;
   z-index: 2;
   max-width: 880px;
+}
+
+.hero-media {
+  display: none;
+  width: 100%;
+  margin: 0 0 30px;
+  border: 1px solid rgba(200, 162, 75, 0.28);
+  background: rgba(6, 17, 30, 0.45);
+  overflow: hidden;
+}
+
+.hero-media img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
 }
 
 .hero-eyebrow {
@@ -339,6 +499,41 @@ body[data-theme="light"] .assumption-item {
 .hero-meta.revealed { opacity: 1; transform: translateY(0); }
 
 .hero-meta span { color: var(--gold); margin: 0 12px; }
+
+.hero-actions {
+  display: none;
+  margin-top: 30px;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.9s var(--ease-out) 1.75s, transform 0.9s var(--ease-out) 1.75s;
+}
+
+.hero-actions.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-primary-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--gold);
+  background: rgba(200, 162, 75, 0.08);
+  color: var(--gold-soft);
+  text-decoration: none;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 15px 20px;
+  transition: all 0.28s var(--ease-out);
+}
+
+.hero-primary-cta:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
 
 .hero-scroll {
   position: absolute;
@@ -1551,6 +1746,8 @@ footer {
   .form-row { grid-template-columns: 1fr; }
 
   .nav-cta { display: none; }
+  .variant-switch { gap: 4px; padding: 3px; }
+  .variant-link { font-size: 9px; letter-spacing: 0.12em; padding: 5px 7px; }
   .theme-toggle { padding: 9px 12px; font-size: 10px; letter-spacing: 0.14em; }
   .nav-mark .nav-wordmark { font-size: 16px; letter-spacing: 0.1em; }
   .hero { min-height: 88vh; padding: 108px 24px 68px; }
@@ -1562,6 +1759,9 @@ footer {
   .hero-meta span { margin: 0 6px; }
   .hero-scroll { bottom: 26px; font-size: 9px; letter-spacing: 0.2em; gap: 10px; }
   .hero-scroll-line { height: 28px; }
+  body[data-variant] .hero { padding: 108px 0 56px; }
+  body[data-variant] .hero-content { padding: 0 24px; }
+  body[data-variant] .hero-media { margin-bottom: 22px; }
   .suite-name { font-size: clamp(32px, 8vw, 40px); }
   .suite-meta { letter-spacing: 0.12em; }
   .suite-desc { font-size: 15px; line-height: 1.62; }
@@ -1581,7 +1781,9 @@ footer {
   .outcomes-grid { grid-template-columns: 1fr; }
   .container { padding: 0 18px; }
   nav, nav.scrolled { padding: 14px 16px; }
-  .nav-actions { gap: 8px; }
+  .nav-actions { gap: 6px; }
+  .variant-switch { gap: 3px; padding: 2px; }
+  .variant-link { font-size: 8px; letter-spacing: 0.1em; padding: 4px 5px; }
   .nav-mark .nav-wordmark { font-size: 14px; letter-spacing: 0.08em; }
   .theme-toggle { padding: 8px 10px; font-size: 9px; letter-spacing: 0.12em; }
   .section-title { font-size: clamp(28px, 8.2vw, 34px); line-height: 1.16; }
@@ -1595,6 +1797,13 @@ footer {
   .hero-meta { font-size: 9px; letter-spacing: 0.08em; }
   .hero-meta span { margin: 0 4px; }
   .hero-scroll { font-size: 8px; letter-spacing: 0.16em; }
+  .hero-primary-cta { width: 100%; }
+  body[data-variant] .hero { padding: 96px 0 52px; }
+  body[data-variant] .hero-content { padding: 0 16px; }
+  body[data-variant] .hero-title { margin-bottom: 14px; }
+  body[data-variant] .hero-media { margin-bottom: 18px; }
+  body[data-variant] .hero-tagline { margin-bottom: 20px; }
+  body[data-variant] .hero-meta { line-height: 1.7; }
   .suite { gap: 24px; padding: 44px 0; }
   .suite-name { font-size: clamp(28px, 9vw, 34px); }
   .suite-desc { font-size: 14px; line-height: 1.58; }
@@ -1637,7 +1846,12 @@ footer {
     <span class="nav-wordmark">Graceland</span>
   </a>
   <div class="nav-actions">
-    <a href="#waitlist" class="nav-cta">Join the List</a>
+    <div class="variant-switch" aria-label="Landing version switcher">
+      <a class="variant-link" data-variant-link="main" href="03-landing-page.html">Main</a>
+      <a class="variant-link" data-variant-link="a" href="03-landing-page.html?view=a">A</a>
+      <a class="variant-link" data-variant-link="b" href="03-landing-page.html?view=b">B</a>
+    </div>
+    <a href="#waitlist" id="topCta" class="nav-cta">Join the List</a>
     <button id="themeToggle" class="theme-toggle" type="button" aria-label="Toggle color theme">Light</button>
   </div>
 </nav>
@@ -1649,9 +1863,15 @@ footer {
   <div class="hero-content">
     <div class="hero-eyebrow" id="heroEyebrow">Climate-smart · Digitally enabled · Women-led · Grand Bahama</div>
     <h1 class="hero-title" id="heroTitle">Graceland</h1>
+    <figure class="hero-media" id="heroMedia">
+      <img src="site-render-aerial.png" alt="Aerial view of Graceland and beachfront setting in Grand Bahama">
+    </figure>
     <div class="hero-descriptor" id="heroDesc">Resilient Tourism & Accommodation Ecosystem</div>
     <p class="hero-tagline" id="heroTag">A women-led, climate-resilient hospitality model expanding from boutique stays into workforce accommodation and community resilience infrastructure.</p>
     <div class="hero-meta" id="heroMeta">Sustainable tourism <span>·</span> Workforce accommodation <span>·</span> Inclusive growth</div>
+    <div class="hero-actions" id="heroActions">
+      <a class="hero-primary-cta" id="heroPrimaryCta" href="#waitlist">Join the List</a>
+    </div>
   </div>
   <div class="hero-scroll" id="heroScroll">
     Discover
@@ -1664,14 +1884,14 @@ footer {
   <div class="container">
     <div class="intro-grid">
       <div class="reveal">
-        <div class="eyebrow">A New Standard</div>
-        <h2 class="section-title">From boutique hospitality to a resilience platform.</h2>
-        <p class="section-lead">Graceland has evolved into a climate-smart, digitally enabled tourism and accommodation ecosystem with measurable economic and social outcomes.</p>
+        <div class="eyebrow" id="introEyebrow">A New Standard</div>
+        <h2 class="section-title" id="introTitle">From boutique hospitality to a resilience platform.</h2>
+        <p class="section-lead" id="introLead">Graceland has evolved into a climate-smart, digitally enabled tourism and accommodation ecosystem with measurable economic and social outcomes.</p>
       </div>
       <div class="intro-body reveal">
-        <p>Graceland still delivers a high-quality guest stay — but the model now targets a broader mission: <strong>tourism competitiveness, workforce lodging capacity, and climate resilience</strong> in Grand Bahama.</p>
-        <p>Phase 1 is delivered and operational. The next phase is structured to expand accommodations, strengthen event and hospitality throughput, and improve long-term asset resilience.</p>
-        <p>For guests, it remains a private South Bahamia destination. For public and private partners, it is a practical blueprint for resilient, women-led tourism development in the Caribbean.</p>
+        <p id="introP1">Graceland still delivers a high-quality guest stay — but the model now targets a broader mission: <strong>tourism competitiveness, workforce lodging capacity, and climate resilience</strong> in Grand Bahama.</p>
+        <p id="introP2">Phase 1 is delivered and operational. The next phase is structured to expand accommodations, strengthen event and hospitality throughput, and improve long-term asset resilience.</p>
+        <p id="introP3">For guests, it remains a private South Bahamia destination. For public and private partners, it is a practical blueprint for resilient, women-led tourism development in the Caribbean.</p>
       </div>
     </div>
   </div>
@@ -1942,11 +2162,11 @@ footer {
     <div class="waitlist-grid">
 
       <!-- GUEST PATH -->
-      <div class="waitlist-path reveal">
+      <div class="waitlist-path reveal" id="guestWaitlistPath">
         <div class="waitlist-path-num">— 01 / FOR GUESTS</div>
-        <h3 class="waitlist-path-title">Book your stay.</h3>
-        <p class="waitlist-path-sub">Now hosting limited direct reservations.</p>
-        <p class="waitlist-path-desc">Submit your details to receive available date windows, suite options, and current rate guidance. Priority goes to early direct-booking requests.</p>
+        <h3 id="guestPathTitle" class="waitlist-path-title">Book your stay.</h3>
+        <p id="guestPathSub" class="waitlist-path-sub">Now hosting limited direct reservations.</p>
+        <p id="guestPathDesc" class="waitlist-path-desc">Submit your details to receive available date windows, suite options, and current rate guidance. Priority goes to early direct-booking requests.</p>
 
         <form id="guestForm" onsubmit="handleSubmit(event, 'guest')">
           <div class="form-group">
@@ -1995,11 +2215,11 @@ footer {
       </div>
 
       <!-- INVESTOR PATH -->
-      <div class="waitlist-path reveal">
+      <div class="waitlist-path reveal" id="investorWaitlistPath">
         <div class="waitlist-path-num">— 02 / FOR INVESTORS</div>
-        <h3 class="waitlist-path-title">Inquire about Phase 2.</h3>
-        <p class="waitlist-path-sub">Private, secured hospitality lending.</p>
-        <p class="waitlist-path-desc">Phase 2 is structured for qualified investors seeking asset-backed exposure to a live hospitality operation. Submit below to request terms, packet, and call scheduling.</p>
+        <h3 id="investPathTitle" class="waitlist-path-title">Inquire about Phase 2.</h3>
+        <p id="investPathSub" class="waitlist-path-sub">Private, secured hospitality lending.</p>
+        <p id="investPathDesc" class="waitlist-path-desc">Phase 2 is structured for qualified investors seeking asset-backed exposure to a live hospitality operation. Submit below to request terms, packet, and call scheduling.</p>
 
         <form id="investorForm" onsubmit="handleSubmit(event, 'investor')">
           <div class="form-group">
@@ -2051,8 +2271,8 @@ footer {
     <div class="investor-grid">
       <div class="reveal">
         <div class="eyebrow">For Investors</div>
-        <h2 class="section-title">Private investment opportunity<br>with operating proof.</h2>
-        <p class="section-lead">This is a revenue-active hospitality asset in South Bahamia, Freeport — positioned at the intersection of resilient tourism infrastructure, workforce accommodation, and inclusive economic growth.</p>
+        <h2 id="investorTitle" class="section-title">Private investment opportunity<br>with operating proof.</h2>
+        <p id="investorLead" class="section-lead">This is a revenue-active hospitality asset in South Bahamia, Freeport — positioned at the intersection of resilient tourism infrastructure, workforce accommodation, and inclusive economic growth.</p>
         <div class="alignment">
           <div class="alignment-title">Funding alignment snapshot</div>
           <ul class="alignment-list">
@@ -2131,6 +2351,10 @@ footer {
 </footer>
 
 <script>
+  const variant = (new URLSearchParams(window.location.search).get('view') || 'main').toLowerCase();
+  const normalizedVariant = ['a', 'b'].includes(variant) ? variant : 'main';
+  document.body.setAttribute('data-variant', normalizedVariant);
+
   // ─── PAGE LOAD ─────────────────────────────────────────
   window.addEventListener('load', () => {
     // Brief delay so loader actually shows
@@ -2139,13 +2363,11 @@ footer {
 
       // Reveal hero in sequence
       requestAnimationFrame(() => {
-        document.getElementById('heroBg').classList.add('revealed');
-        document.getElementById('heroEyebrow').classList.add('revealed');
-        document.getElementById('heroTitle').classList.add('revealed');
-        document.getElementById('heroDesc').classList.add('revealed');
-        document.getElementById('heroTag').classList.add('revealed');
-        document.getElementById('heroMeta').classList.add('revealed');
-        document.getElementById('heroScroll').classList.add('revealed');
+        const heroRevealIds = ['heroBg', 'heroEyebrow', 'heroTitle', 'heroDesc', 'heroTag', 'heroMeta', 'heroScroll', 'heroActions'];
+        heroRevealIds.forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.classList.add('revealed');
+        });
       });
     }, 600);
   });
@@ -2172,22 +2394,116 @@ footer {
   }
 
   const storedTheme = localStorage.getItem(THEME_KEY);
-  const defaultTheme = storedTheme || 'dark';
+  const defaultTheme = storedTheme || 'light';
   applyTheme(defaultTheme);
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const current = document.body.getAttribute('data-theme') || 'dark';
+      const current = document.body.getAttribute('data-theme') || 'light';
       const next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
       localStorage.setItem(THEME_KEY, next);
     });
   }
 
+  // ─── LANDING MESSAGE VARIANTS (main / A / B) ───────────
+  const copyByVariant = {
+    main: {
+      heroEyebrow: 'Climate-smart · Digitally enabled · Women-led · Grand Bahama',
+      heroDesc: 'Resilient Tourism & Accommodation Ecosystem',
+      heroTag: 'A women-led, climate-resilient hospitality model expanding from boutique stays into workforce accommodation and community resilience infrastructure.',
+      heroMeta: 'Sustainable tourism <span>·</span> Workforce accommodation <span>·</span> Inclusive growth',
+      introEyebrow: 'A New Standard',
+      introTitle: 'From boutique hospitality to a resilience platform.',
+      introLead: 'Graceland has evolved into a climate-smart, digitally enabled tourism and accommodation ecosystem with measurable economic and social outcomes.',
+      introP1: 'Graceland still delivers a high-quality guest stay — but the model now targets a broader mission: <strong>tourism competitiveness, workforce lodging capacity, and climate resilience</strong> in Grand Bahama.',
+      introP2: 'Phase 1 is delivered and operational. The next phase is structured to expand accommodations, strengthen event and hospitality throughput, and improve long-term asset resilience.',
+      introP3: 'For guests, it remains a private South Bahamia destination. For public and private partners, it is a practical blueprint for resilient, women-led tourism development in the Caribbean.',
+      guestPathTitle: 'Book your stay.',
+      guestPathSub: 'Now hosting limited direct reservations.',
+      guestPathDesc: 'Submit your details to receive available date windows, suite options, and current rate guidance. Priority goes to early direct-booking requests.',
+      investPathTitle: 'Inquire about Phase 2.',
+      investPathSub: 'Private, secured hospitality lending.',
+      investPathDesc: 'Phase 2 is structured for qualified investors seeking asset-backed exposure to a live hospitality operation. Submit below to request terms, packet, and call scheduling.',
+      investorTitle: 'Private investment opportunity<br>with operating proof.',
+      investorLead: 'This is a revenue-active hospitality asset in South Bahamia, Freeport — positioned at the intersection of resilient tourism infrastructure, workforce accommodation, and inclusive economic growth.',
+      topCta: 'Join the List'
+    },
+    a: {
+      heroEyebrow: 'Boutique destination living · South Bahamia, Freeport',
+      heroDesc: 'Boutique Hospitality & Lifestyle Club',
+      heroTag: 'Your house in Freeport for as long as you are in town — curated suites, private experiences, and destination-led stays.',
+      heroMeta: 'Stay <span>·</span> Experiences <span>·</span> Discover Freeport',
+      introEyebrow: 'Destination First',
+      introTitle: 'A boutique hospitality brand rooted in place.',
+      introLead: 'Graceland is built as a lifestyle destination: accommodations, amenities, events, and curated local experiences under one brand story.',
+      introP1: 'This is not a generic listing model. It is an intentional boutique hospitality experience designed for travelers who value privacy, quality, and character.',
+      introP2: 'Guests move between signature suites, The Courtyard, local tours, wellness moments, and cultural touchpoints that make Freeport memorable.',
+      introP3: 'As the platform matures, the destination layer remains the front door while investment and growth infrastructure powers long-term scale.',
+      guestPathTitle: 'Explore stays.',
+      guestPathSub: 'Boutique accommodations and flexible stay options.',
+      guestPathDesc: 'Tell us your dates and suite preferences. We will match you with available inventory and curated add-on experiences.',
+      investPathTitle: 'View investment path.',
+      investPathSub: 'Growth vision behind the destination brand.',
+      investPathDesc: 'For partners and qualified investors interested in the phased expansion model, submit below for project overview and structure.',
+      investorTitle: 'Investment ecosystem<br>behind the destination.',
+      investorLead: 'Behind the hospitality brand sits a phased, revenue-linked growth strategy designed to scale responsibly while preserving boutique quality.',
+      topCta: 'Book a Stay'
+    },
+    b: {
+      heroEyebrow: 'Climate-smart tourism infrastructure · Grand Bahama',
+      heroDesc: 'Women-Led Resilient Development Platform',
+      heroTag: 'Operating hospitality today with a phased model for workforce accommodation, climate resilience, and inclusive economic growth.',
+      heroMeta: 'Project overview <span>·</span> Phased growth <span>·</span> Funding alignment',
+      introEyebrow: 'Development Thesis',
+      introTitle: 'A resilient accommodation and tourism ecosystem.',
+      introLead: 'Graceland is positioned as a grant- and investor-aligned project delivering sustainable tourism infrastructure, workforce capacity, and local resilience outcomes.',
+      introP1: 'Phase 1 proves execution and revenue viability. Phase 2 expands lodging units and hospitality infrastructure to strengthen operating throughput.',
+      introP2: 'The model combines climate-smart planning, digitally enabled operations, and women-led governance as core design principles.',
+      introP3: 'This structure supports both commercial performance and development outcomes relevant to public and private funding partners.',
+      guestPathTitle: 'Hospitality operations.',
+      guestPathSub: 'Current accommodation inventory and bookings.',
+      guestPathDesc: 'Submit a stay request for currently operating units while phased expansion advances.',
+      investPathTitle: 'Funding & growth inquiry.',
+      investPathSub: 'Private lending and phased capital deployment.',
+      investPathDesc: 'Request the project packet for use-of-funds, return band assumptions, and development milestone structure.',
+      investorTitle: 'Operating proof + phased capital model.',
+      investorLead: 'This is a revenue-active hospitality asset with a documented pathway for scaled cashflow, resilience upgrades, and measurable local economic impact.',
+      topCta: 'Project Overview'
+    }
+  };
+
+  const activeCopy = copyByVariant[normalizedVariant];
+  Object.entries(activeCopy).forEach(([id, value]) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    if (id === 'heroMeta') el.innerHTML = value;
+    else if (id === 'investorTitle') el.innerHTML = value;
+    else el.innerHTML = value;
+  });
+
+  document.querySelectorAll('[data-variant-link]').forEach((link) => {
+    const isActive = link.getAttribute('data-variant-link') === normalizedVariant;
+    link.classList.toggle('active', isActive);
+  });
+
+  const heroPrimaryCta = document.getElementById('heroPrimaryCta');
+  const heroCtaByVariant = {
+    main: { label: 'Join the List', href: '#waitlist' },
+    a: { label: 'Book a Stay', href: '#guest-form' },
+    b: { label: 'View Project Details', href: '#investors' }
+  };
+  if (heroPrimaryCta) {
+    const activeCta = heroCtaByVariant[normalizedVariant];
+    heroPrimaryCta.textContent = activeCta.label;
+    heroPrimaryCta.setAttribute('href', activeCta.href);
+  }
+
   // ─── HERO PARALLAX ──────────────────────────────────────
   const heroBg = document.getElementById('heroBg');
   let ticking = false;
   window.addEventListener('scroll', () => {
+    if (!heroBg || heroBg.offsetParent === null) return;
     if (!ticking) {
       requestAnimationFrame(() => {
         const y = window.scrollY;
